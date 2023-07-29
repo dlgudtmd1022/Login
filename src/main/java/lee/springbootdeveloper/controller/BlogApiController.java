@@ -3,6 +3,7 @@ package lee.springbootdeveloper.controller;
 
 import lee.springbootdeveloper.domain.Article;
 import lee.springbootdeveloper.dto.AddArticleRequest;
+import lee.springbootdeveloper.dto.ArticleListViewResponse;
 import lee.springbootdeveloper.dto.ArticleResponse;
 import lee.springbootdeveloper.dto.UpdateArticleRequest;
 import lee.springbootdeveloper.service.BlogService;
@@ -10,6 +11,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -63,4 +65,5 @@ public class BlogApiController {
 
         return ResponseEntity.ok(updatedArticle);
     }
+
 }

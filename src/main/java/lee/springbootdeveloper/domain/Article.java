@@ -2,6 +2,10 @@ package lee.springbootdeveloper.domain;
 
 import jakarta.persistence.*;
 import lombok.Builder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity // 엔터티로 지정
 public class Article {
@@ -42,5 +46,13 @@ public class Article {
         this.title = title;
         this.content = content;
     }
+
+    @CreatedDate // 엔티티가 생성될 때 생성 시간 저장
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate  // 엔티티가 수정될 때 수정 시간 저장
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }
 
