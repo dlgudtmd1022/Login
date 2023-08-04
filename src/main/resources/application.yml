@@ -1,4 +1,4 @@
-Spring:
+spring:
   jpa:
     show-sql: true
     properties:
@@ -11,4 +11,3 @@ Spring:
   h2:
     console:
       enabled: true
-
