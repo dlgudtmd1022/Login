@@ -23,7 +23,7 @@ public class TokenProvider {
 
     private final JwtProperties jwtProperties;
 
-    public String generateToken(User user, Duration expiredAt){
+    public String generateToken(User user, Duration expiredAt) {
         Date now = new Date();
         return makeToken(new Date(now.getTime() + expiredAt.toMillis()), user);
     }
@@ -39,8 +39,8 @@ public class TokenProvider {
                 .setIssuedAt(now)                       // 내용 iat : 현재시간
                 .setExpiration(expiry)                  // 내용 exp : expiry 맴버 변숫값
                 .setSubject(user.getEmail())            // 내용 sub : 유저의 이메일
-                .claim("id", user.getEmail())    // 클레임 id : 유저 ID
-                // 서명 : 비밀갑소가 함께 해시값을 HS256 방식으로 암호화
+                .claim("id", user.getId())    // 클레임 id : 유저 ID
+                // 서명 : 비밀값과 함께 해시값을 HS256 방식으로 암호화
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }
