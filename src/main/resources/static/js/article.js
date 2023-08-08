@@ -112,7 +112,7 @@ if(createButton){
             location.replace("/articles");
         }
 
-        httpRequest("POST", "/api/articlees", body, success, fail);
+        httpRequest("POST", "/api/articles", body, success, fail);
     });
 }
 
@@ -125,7 +125,7 @@ function getCookie(key){
 
         var dic = item.split("=");
 
-        if(key == div[0]){
+        if(key == dic[0]){
             result = dic[1];
             return true;
         }
