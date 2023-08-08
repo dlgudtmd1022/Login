@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    include: oauth2
   jpa:
     show-sql: true
     properties:
@@ -16,8 +18,8 @@ spring:
       client:
         registration:
           google:
-            client-id:  {id}
-            client-secret: {secret}
+            client-id: ${id}
+            client-secret: ${secret}
             scope:
               - email
               - profile
