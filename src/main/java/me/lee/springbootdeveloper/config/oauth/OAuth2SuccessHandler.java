@@ -29,7 +29,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     // 엑세스 토큰 유효 기간 L
     public static final Duration ACCESS_TOKEN_DURATION = Duration.ofDays(1);
     // 인증 성공 시 리다리렉션 되는 경로 L
-    public static final String REDIRECT_PATH = "/okay";
+    public static final String REDIRECT_PATH = "/articles";
 
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
