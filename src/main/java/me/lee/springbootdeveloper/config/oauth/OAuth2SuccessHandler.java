@@ -22,16 +22,22 @@ import java.time.Duration;
 @Component
 public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
+    // 리프레스 토큰을 저장할때 사용할 쿠키 이름 설정 L
     public static final String REFRESH_TOKEN_COOKIE_NAME = "refresh_token";
+    // 리프레시 토큰 유효 기간 L
     public static final Duration REFRESH_TOKEN_DURATION = Duration.ofDays(14);
+    // 엑세스 토큰 유효 기간 L
     public static final Duration ACCESS_TOKEN_DURATION = Duration.ofDays(1);
-    public static final String REDIRECT_PATH = "/articles";
+    // 인증 성공 시 리다리렉션 되는 경로 L
+    public static final String REDIRECT_PATH = "/okay";
 
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
     private final OAuth2AuthorizationRequestBasedOnCookieRepository authorizationRequestRepository;
     private final UserService userService;
 
+
+    // 성공적으로 인증된 후 실행되는 메서드 L
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException{
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();

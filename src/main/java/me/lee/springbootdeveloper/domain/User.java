@@ -23,18 +23,26 @@ public class User implements UserDetails { // UserDetails를 상속받아 인증
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = true)
     private String email;
 
     @Column(name = "password")
     private String password;
 
+    @Column(name = "profile_nickname", nullable = true)
+    private String profile_nickname;
+
+    @Column(name = "account_email", nullable = true)
+    private String account_email;
+
     // 생성자에 nickname 추가 - 10장 OAuth2 로그인
     @Builder
-    public User(String email, String password, String nickname) {
+    public User(String email, String password, String nickname, String profile_nickname, String account_email) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
+        this.profile_nickname = profile_nickname;
+        this.account_email = account_email;
     }
 
     @Override // 권한 반환

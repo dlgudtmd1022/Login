@@ -14,6 +14,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Service
 public class OAuth2UserCustomService extends DefaultOAuth2UserService {
+
     private final UserRepository userRepository;
 
     @Override
@@ -21,6 +22,11 @@ public class OAuth2UserCustomService extends DefaultOAuth2UserService {
         // 요청으로 바탕으로 유저 정보를 담은 객체 반환
         OAuth2User user = super.loadUser(userRequest);
         saveOrUpdate(user);
+        System.out.println("userRequest = " + userRequest.getClientRegistration());
+        System.out.println("oAuth2User = " + userRequest.getAdditionalParameters());
+        System.out.println("oAuth2User.getAttributes() = " + user.getAttributes());
+        System.out.println("oAuth2User.getAuthorities() = " + user.getAuthorities());
+        System.out.println("oAuth2User.getName() = " + user.getName());
         return user;
     }
 
